@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+.header h1 {
+    margin-bottom: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.scores-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.score-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.team-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.score {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2c5282;
+}
+
+.vs {
+    font-weight: bold;
+    color: #666;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .score-card {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .team {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+/* Add these new styles to your existing CSS */
+.live-game {
+    border: 2px solid #ff4444;
+    animation: pulse 2s infinite;
+}
+
+.status-live {
+    color: #ff4444;
+}
+
+.status-complete {
+    color: #2c5282;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 68, 68, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0);
+    }
+}
+
+/* Add these styles to your existing style.css */
+
+.game-score {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 10px 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 120px;
+}
+
+.team-logo {
+    width: 30px;  /* Reduced logo size */
+    height: 30px; /* Maintain aspect ratio */
+    object-fit: contain;
+}
+
+.score {
+    font-size: 24px;
+    font-weight: bold;
+    min-width: 40px;
+    text-align: center;
+}
+
+.game-info {
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+/* Make it responsive */
+@media (max-width: 600px) {
+    .game-score {
+        padding: 10px;
+    }
+    
+    .team {
+        min-width: 100px;
+        font-size: 14px;
+    }
+    
+    .team-logo {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .score {
+        font-size: 20px;
+    }
+}

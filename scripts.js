@@ -7,6 +7,13 @@ const COMPLETED_UPDATE_INTERVAL = 300000;
 // Track if we have any live games
 let hasLiveGames = false;
 
+// Update the refresh intervals
+const REFRESH_INTERVALS = {
+    LIVE: 30000,      // 30 seconds when games are live
+    PREGAME: 60000,   // 1 minute for pre-game
+    POSTGAME: 300000  // 5 minutes for post-game
+};
+
 // Check if we're on a specific sport page and return the appropriate fetch function
 function getPageFunction() {
     const path = window.location.pathname;
@@ -51,6 +58,7 @@ async function fetchNBAScores() {
     console.log('Attempting to fetch NBA scores...');
     const scoresSection = document.querySelector('.scores-section');
     const heading = scoresSection.querySelector('h2');
+    heading.textContent = 'NBA';
     scoresSection.innerHTML = '';
     scoresSection.appendChild(heading);
     
@@ -71,26 +79,30 @@ async function fetchNBAScores() {
                 const homeTeam = event.competitions[0].competitors.find(team => team.homeAway === 'home');
                 const awayTeam = event.competitions[0].competitors.find(team => team.homeAway === 'away');
                 
-                const scoreCard = document.createElement('div');
-                scoreCard.className = 'game-score';
-                scoreCard.innerHTML = `
-                    <div class="team">
-                        <img src="${awayTeam.team.logo}" alt="${awayTeam.team.displayName}" class="team-logo">
-                        <span>${awayTeam.team.abbreviation}</span>
-                        <span class="score">${awayTeam.score || '0'}</span>
-                    </div>
-                    <div class="game-info">
-                        ${event.status.type.shortDetail}
-                        ${event.status.type.state === 'in' ? 
-                            `<div class="live-indicator">LIVE</div>` : ''}
-                    </div>
-                    <div class="team">
-                        <img src="${homeTeam.team.logo}" alt="${homeTeam.team.displayName}" class="team-logo">
-                        <span>${homeTeam.team.abbreviation}</span>
-                        <span class="score">${homeTeam.score || '0'}</span>
+                const gameLink = document.createElement('a');
+                gameLink.href = `game-details.html?gameId=${event.id}&sport=NBA`;
+                gameLink.className = 'game-link';
+                
+                gameLink.innerHTML = `
+                    <div class="game-score">
+                        <div class="team">
+                            <img src="${awayTeam.team.logo}" alt="${awayTeam.team.displayName}" class="team-logo">
+                            <span>${awayTeam.team.abbreviation}</span>
+                            <span class="score">${awayTeam.score || '0'}</span>
+                        </div>
+                        <div class="game-info">
+                            ${event.status.type.shortDetail}
+                            ${event.status.type.state === 'in' ? 
+                                `<div class="live-indicator">LIVE</div>` : ''}
+                        </div>
+                        <div class="team">
+                            <img src="${homeTeam.team.logo}" alt="${homeTeam.team.displayName}" class="team-logo">
+                            <span>${homeTeam.team.abbreviation}</span>
+                            <span class="score">${homeTeam.score || '0'}</span>
+                        </div>
                     </div>
                 `;
-                gamesContainer.appendChild(scoreCard);
+                gamesContainer.appendChild(gameLink);
             });
             
             scoresSection.appendChild(gamesContainer);
@@ -112,6 +124,7 @@ async function fetchNFLScores() {
     console.log('Attempting to fetch NFL scores...');
     const scoresSection = document.querySelector('.scores-section');
     const heading = scoresSection.querySelector('h2');
+    heading.textContent = 'NFL';
     scoresSection.innerHTML = '';
     scoresSection.appendChild(heading);
     
@@ -132,26 +145,30 @@ async function fetchNFLScores() {
                 const homeTeam = event.competitions[0].competitors.find(team => team.homeAway === 'home');
                 const awayTeam = event.competitions[0].competitors.find(team => team.homeAway === 'away');
                 
-                const scoreCard = document.createElement('div');
-                scoreCard.className = 'game-score';
-                scoreCard.innerHTML = `
-                    <div class="team">
-                        <img src="${awayTeam.team.logo}" alt="${awayTeam.team.displayName}" class="team-logo">
-                        <span>${awayTeam.team.abbreviation}</span>
-                        <span class="score">${awayTeam.score || '0'}</span>
-                    </div>
-                    <div class="game-info">
-                        ${event.status.type.shortDetail}
-                        ${event.status.type.state === 'in' ? 
-                            `<div class="live-indicator">LIVE</div>` : ''}
-                    </div>
-                    <div class="team">
-                        <img src="${homeTeam.team.logo}" alt="${homeTeam.team.displayName}" class="team-logo">
-                        <span>${homeTeam.team.abbreviation}</span>
-                        <span class="score">${homeTeam.score || '0'}</span>
+                const gameLink = document.createElement('a');
+                gameLink.href = `game-details.html?gameId=${event.id}`;
+                gameLink.className = 'game-link';
+                
+                gameLink.innerHTML = `
+                    <div class="game-score">
+                        <div class="team">
+                            <img src="${awayTeam.team.logo}" alt="${awayTeam.team.displayName}" class="team-logo">
+                            <span>${awayTeam.team.abbreviation}</span>
+                            <span class="score">${awayTeam.score || '0'}</span>
+                        </div>
+                        <div class="game-info">
+                            ${event.status.type.shortDetail}
+                            ${event.status.type.state === 'in' ? 
+                                `<div class="live-indicator">LIVE</div>` : ''}
+                        </div>
+                        <div class="team">
+                            <img src="${homeTeam.team.logo}" alt="${homeTeam.team.displayName}" class="team-logo">
+                            <span>${homeTeam.team.abbreviation}</span>
+                            <span class="score">${homeTeam.score || '0'}</span>
+                        </div>
                     </div>
                 `;
-                gamesContainer.appendChild(scoreCard);
+                gamesContainer.appendChild(gameLink);
             });
             
             scoresSection.appendChild(gamesContainer);
@@ -173,6 +190,7 @@ async function fetchMLBScores() {
     console.log('Attempting to fetch MLB scores...');
     const scoresSection = document.querySelector('.scores-section');
     const heading = scoresSection.querySelector('h2');
+    heading.textContent = 'MLB';
     scoresSection.innerHTML = '';
     scoresSection.appendChild(heading);
     
@@ -193,26 +211,30 @@ async function fetchMLBScores() {
                 const homeTeam = event.competitions[0].competitors.find(team => team.homeAway === 'home');
                 const awayTeam = event.competitions[0].competitors.find(team => team.homeAway === 'away');
                 
-                const scoreCard = document.createElement('div');
-                scoreCard.className = 'game-score';
-                scoreCard.innerHTML = `
-                    <div class="team">
-                        <img src="${awayTeam.team.logo}" alt="${awayTeam.team.displayName}" class="team-logo">
-                        <span>${awayTeam.team.abbreviation}</span>
-                        <span class="score">${awayTeam.score || '0'}</span>
-                    </div>
-                    <div class="game-info">
-                        ${event.status.type.shortDetail}
-                        ${event.status.type.state === 'in' ? 
-                            `<div class="live-indicator">LIVE</div>` : ''}
-                    </div>
-                    <div class="team">
-                        <img src="${homeTeam.team.logo}" alt="${homeTeam.team.displayName}" class="team-logo">
-                        <span>${homeTeam.team.abbreviation}</span>
-                        <span class="score">${homeTeam.score || '0'}</span>
+                const gameLink = document.createElement('a');
+                gameLink.href = `game-details.html?gameId=${event.id}&sport=MLB`;
+                gameLink.className = 'game-link';
+                
+                gameLink.innerHTML = `
+                    <div class="game-score">
+                        <div class="team">
+                            <img src="${awayTeam.team.logo}" alt="${awayTeam.team.displayName}" class="team-logo">
+                            <span>${awayTeam.team.abbreviation}</span>
+                            <span class="score">${awayTeam.score || '0'}</span>
+                        </div>
+                        <div class="game-info">
+                            ${event.status.type.shortDetail}
+                            ${event.status.type.state === 'in' ? 
+                                `<div class="live-indicator">LIVE</div>` : ''}
+                        </div>
+                        <div class="team">
+                            <img src="${homeTeam.team.logo}" alt="${homeTeam.team.displayName}" class="team-logo">
+                            <span>${homeTeam.team.abbreviation}</span>
+                            <span class="score">${homeTeam.score || '0'}</span>
+                        </div>
                     </div>
                 `;
-                gamesContainer.appendChild(scoreCard);
+                gamesContainer.appendChild(gameLink);
             });
             
             scoresSection.appendChild(gamesContainer);
@@ -374,11 +396,73 @@ const styleSheet = document.createElement("style");
 styleSheet.textContent = additionalStyles;
 document.head.appendChild(styleSheet);
 
-// Update the refresh function to include MLB scores
-async function refreshScores() {
-    await Promise.all([
-        fetchNBAScores(),
-        fetchNFLScores(),
-        fetchMLBScores()
-    ]);
+// Update the getRefreshInterval function
+function getRefreshInterval(data) {
+    if (!data.events || data.events.length === 0) {
+        return null; // No refresh needed when no games
+    }
+
+    // Check if any games are live
+    const hasLiveGames = data.events.some(event => 
+        event.status.type.state === 'in'
+    );
+
+    // Check if any games are pre-game
+    const hasUpcomingGames = data.events.some(event => 
+        event.status.type.state === 'pre'
+    );
+
+    if (hasLiveGames) {
+        return REFRESH_INTERVALS.LIVE;
+    } else if (hasUpcomingGames) {
+        return REFRESH_INTERVALS.PREGAME;
+    } else {
+        return REFRESH_INTERVALS.POSTGAME;
+    }
+}
+
+// Update the startAdaptiveRefresh function
+function startAdaptiveRefresh(sportType) {
+    let refreshTimer;
+    
+    async function refreshScores() {
+        try {
+            const response = await fetch(getApiUrl(sportType));
+            const data = await response.json();
+            
+            // Update the display
+            if (sportType === 'NBA') {
+                await fetchNBAScores();
+            } else if (sportType === 'NFL') {
+                await fetchNFLScores();
+            } else if (sportType === 'MLB') {
+                await fetchMLBScores();
+            }
+
+            // Get new refresh interval based on game states
+            const newInterval = getRefreshInterval(data);
+            
+            // Clear existing timer
+            if (refreshTimer) {
+                clearInterval(refreshTimer);
+            }
+
+            // Only set new timer if there are games to monitor
+            if (newInterval) {
+                refreshTimer = setInterval(refreshScores, newInterval);
+                console.log(`Scores refreshed. Next update in ${newInterval/1000} seconds`);
+            } else {
+                console.log('No games scheduled. Auto-refresh disabled.');
+            }
+            
+        } catch (error) {
+            console.error('Error in refresh cycle:', error);
+            if (refreshTimer) {
+                clearInterval(refreshTimer);
+            }
+        }
+    }
+
+    // Start initial refresh cycle
+    refreshScores();
 } 

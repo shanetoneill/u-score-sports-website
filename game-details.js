@@ -316,3 +316,55 @@ function showTab(tabId) {
         }
     });
 } 
+
+// This function dynamically updates the noise meter description based on the percentage
+function updateNoiseDescription(percentage) {
+    const noiseDescription = document.querySelector('.noise-description');
+    
+    if (percentage < 25) {
+        noiseDescription.textContent = 'The stadium is relatively quiet today.';
+        noiseDescription.style.color = 'var(--gray)';
+    } else if (percentage < 50) {
+        noiseDescription.textContent = 'Fans are starting to make some noise!';
+        noiseDescription.style.color = 'var(--accent)';
+    } else if (percentage < 75) {
+        noiseDescription.textContent = 'The crowd is getting louder with every play!';
+        noiseDescription.style.color = 'var(--accent)';
+    } else if (percentage < 90) {
+        noiseDescription.textContent = 'The crowd is bringing incredible energy to this game!';
+        noiseDescription.style.color = 'var(--secondary)';
+    } else {
+        noiseDescription.textContent = 'DEAFENING NOISE! This crowd is setting records!';
+        noiseDescription.style.color = 'var(--primary)';
+    }
+}
+
+// Once the DOM is fully loaded, initialize the noise meter
+document.addEventListener('DOMContentLoaded', function() {
+    // If you're loading game data dynamically, you can set the noise level here
+    const noiseLevel = 75; // Set to 75% as requested
+    
+    // Update the width of the noise level indicator
+    const noiseLevelElement = document.querySelector('.noise-level');
+    if (noiseLevelElement) {
+        noiseLevelElement.style.width = `${noiseLevel}%`;
+    }
+    
+    // Update the displayed percentage
+    const noisePercentage = document.querySelector('.noise-percentage');
+    if (noisePercentage) {
+        noisePercentage.textContent = `${noiseLevel}%`;
+    }
+    
+    // Update the description based on the noise level
+    updateNoiseDescription(noiseLevel);
+    
+    // Optional: Add a slight animation or fluctuation to make it look more alive
+    setInterval(() => {
+        if (noiseLevelElement) {
+            const randomFluctuation = Math.random() * 2 - 1; // Random value between -1 and 1
+            const newLevel = Math.max(0, Math.min(100, noiseLevel + randomFluctuation));
+            noiseLevelElement.style.width = `${newLevel}%`;
+        }
+    }, 500);
+});

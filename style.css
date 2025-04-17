@@ -680,13 +680,15 @@ h2::after {
 }
 
 .category-abbreviation {
-    color: black;
+    color: black !important;         
     font-size: 0.9rem;
     margin-left: 0.7rem;
     padding: 2px 8px;
     background-color: var(--gray-light);
     border-radius: 20px;
+    font-weight: 600;
 }
+
 
 .player-card {
     display: flex;

@@ -680,7 +680,7 @@ h2::after {
 }
 
 .category-abbreviation {
-    color: var(--gray-dark);
+    color: black;
     font-size: 0.9rem;
     margin-left: 0.7rem;
     padding: 2px 8px;

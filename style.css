@@ -873,3 +873,106 @@ h2::after {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--primary-dark);
 }
+
+<style>
+.noise-meter-container {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background-color: var(--dark);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid #333333;
+}
+
+.noise-meter-container h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: var(--light);
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.noise-meter-container h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 3px;
+}
+
+.noise-meter {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.noise-gauge {
+    height: 25px;
+    background-color: #333333;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 0.5rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.noise-level {
+    height: 100%;
+    background: linear-gradient(to right, 
+        var(--accent) 0%, 
+        var(--accent) 30%, 
+        var(--secondary) 60%, 
+        var(--primary) 100%);
+    border-radius: var(--radius-lg);
+    transition: width 1s ease-in-out;
+    position: relative;
+    animation: pulse-noise 2s infinite;
+}
+
+@keyframes pulse-noise {
+    0%, 100% { box-shadow: 0 0 10px var(--primary); }
+    50% { box-shadow: 0 0 20px var(--primary); }
+}
+
+.noise-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--gray);
+}
+
+.noise-percentage {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.noise-description {
+    text-align: center;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+@media (max-width: 600px) {
+    .noise-labels {
+        font-size: 0.7rem;
+    }
+    
+    .noise-gauge {
+        height: 20px;
+    }
+    
+    .noise-percentage {
+        font-size: 0.9rem;
+    }
+}
+</style>

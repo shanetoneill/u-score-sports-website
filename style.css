@@ -874,7 +874,6 @@ h2::after {
     background: var(--primary-dark);
 }
 
-<style>
 .noise-meter-container {
     margin-top: 2.5rem;
     padding: 1.5rem;
@@ -975,4 +974,3 @@ h2::after {
         font-size: 0.9rem;
     }
 }
-</style>

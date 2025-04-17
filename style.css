@@ -12,14 +12,14 @@
     --secondary-dark: #c0392b;   /* Dark Red */
     --accent: #ff5252;           /* Bright Red */
     --accent-dark: #d32f2f;      /* Deep Red */
-    --light: #f5f5f5;            /* Light Gray */
-    --dark: #121212;             /* Very Dark Gray (almost black) */
-    --gray: #757575;             /* Medium Gray */
-    --gray-light: #2c2c2c;       /* Dark Gray */
-    --gray-dark: #1a1a1a;        /* Very Dark Gray */
-    --background: #181818;       /* Black Background */
-    --card-bg: #242424;          /* Slightly lighter than background */
-    --text: #f5f5f5;             /* Light Text */
+    --light: #ecf0f1;            /* Original light */
+    --dark: #121212;             /* Almost Black */
+    --gray: #95a5a6;             /* Original gray */
+    --gray-light: #ecf0f1;       /* Original gray light */
+    --gray-dark: #7f8c8d;        /* Original gray dark */
+    --background: #121212;       /* Black Background */
+    --card-bg: #1e1e1e;          /* Slightly lighter than background */
+    --text: #ecf0f1;             /* Light Text */
     --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
     --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.5);

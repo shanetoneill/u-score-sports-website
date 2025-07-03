@@ -40,3 +40,12 @@ Full-stack application that displays real-time sports data and news in a Miami-i
 - HTML / CSS
 - Git & GitHub
 - NewsAPI / ESPN API
+
+---
+
+## Contributors
+
+- **Shane O'Neill**  
+- **Elliot Wright**  
+- **Samuel Schell**  
+University of Miami — CSC431: Introduction to Software Engineering (Group #4)

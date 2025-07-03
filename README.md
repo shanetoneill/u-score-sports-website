@@ -1,21 +1,20 @@
 # U-Score Sports Website
 
-Full-stack application that displays real-time sports data and news in a Miami-inspired theme.
+Full-stack application that displays real-time sports data. 
 
 ---
 
 ## Frontend
 
 - HTML / CSS / JavaScript
-- Tailwind CSS (optional)
 - Responsive layout
-- Tabbed navigation for NFL, NCAAF, NBA, News
+- Tabbed navigation for NFL, MLB, NBA
 
 ---
 
 ## Backend
 
-- None (Static site using APIs)
+- N/A (Static site using APIs)
 
 ---
 
@@ -27,8 +26,8 @@ Full-stack application that displays real-time sports data and news in a Miami-i
 
 ## Features
 
-- Live data from ESPN and NewsAPI
-- Clean Miami Vice color scheme
+- Live data from ESPN
+- Clean Red and Black color scheme
 - Optimized for desktop and mobile
 - Custom UI with animated components
 
@@ -39,7 +38,7 @@ Full-stack application that displays real-time sports data and news in a Miami-i
 - JavaScript
 - HTML / CSS
 - Git & GitHub
-- NewsAPI / ESPN API
+- ESPN API
 
 ---
 

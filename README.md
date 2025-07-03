@@ -48,4 +48,5 @@ Full-stack application that displays real-time sports data and news in a Miami-i
 - **Shane O'Neill**  
 - **Elliot Wright**  
 - **Samuel Schell**  
+
 University of Miami — CSC431: Introduction to Software Engineering (Group #4)

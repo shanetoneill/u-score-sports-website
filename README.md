@@ -2,7 +2,7 @@
 
 Full-stack application that displays real-time sports data. 
 
-https://drive.google.com/file/d/11eOT8I21fTpmnpFILa_Vp9brCZZaDlXC/view?usp=sharing
+https://shanetoneill.github.io/u-score-sports-website/
 
 ---
 
